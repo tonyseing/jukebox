@@ -1,14 +1,36 @@
-function parseNote(note){
-if (note.indexOf("*") === -1){
-}else {
-  const song = {
-    pitch: note.substring(0,2),
-    beat: note.substring(4),
-   }
- }
-}
-console.log (parseNote("C#*2"));
+// return parsed note object { pitch: , beat: }
 
+// parse note without beat
+// return { pitch: , beat: 1 }
+
+// parse note with beat
+
+function parseNote(note){
+  // note without beat
+  let parsedNote;
+  if (note.indexOf("*") === -1){
+    parsedNote = {
+      pitch: note,
+      beat: 1
+    };
+  }
+  // note with beat
+  else {
+    let parsedNoteArray = note.split('*');
+    //['C#', '2']
+
+    parsedNote = {
+      pitch: parsedNoteArray[0],
+      beat: parseInt(parsedNoteArray[1]),
+    }
+  }
+
+  return parsedNote;
+}
+
+
+console.log (parseNote("C#"));
+console.log (parseNote("C#*2"));
 
 //pitch.substring(0,1)
 
